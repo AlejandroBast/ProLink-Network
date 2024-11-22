@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones</title>
+</head>
+<body>
+    <h1>Publicaciones</h1>
+
+    <!-- Mostrar formulario si el usuario está autenticado -->
+    <h2>Publica algo</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Publicar</button>
+    </form>
+
+    <h2>Publicaciones Recientes</h2>
+    <!-- Mostrar publicaciones -->
+    {% for post in posts %}
+        <div>
+            <strong>{{ post.user.username }}</strong> dijo:
+            <p>{{ post.content }}</p>
+            <small>Publicado el {{ post.created_at|date:"d M Y H:i" }}</small>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No hay publicaciones aún.</p>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

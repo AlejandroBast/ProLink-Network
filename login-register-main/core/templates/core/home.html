@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% if request.user.is_authenticated %}
+    <h1 class="text-center"> Bienvenido a <strong>ProLink-Network</strong> de Nuevo {{ user.username | upper }} </h1>
+{% else %}
+    <h1 class="text-center"> Bienvenido a <strong>ProLink-Network</strong></h1>
+{% endif %}
+
+
+
+<div class="text-center">
+    <img src="{% static 'images/logo.jpg' %}" alt="Logo" width="200" height="200">
+</div>
+    
+    
+    
+
+    
+<p align="justify">
+    <strong>ProLink Network</strong> es una plataforma que conecta a profesionales con empleos de forma rápida y sencilla. Permite crear perfiles,
+    establecer conexiones con empresas y colegas, y encontrar oportunidades laborales que se ajusten a tu perfil. Tanto si buscas tu primer trabajo
+    como si eres un profesional con experiencia, ProLink Network te ayuda a destacar y avanzar en tu carrera.
+
+
+
+{% endblock %}
